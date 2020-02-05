@@ -14,7 +14,7 @@ public class wheel{
 public class carController : MonoBehaviour
 {
     public List<wheel> wheelsCollider;
-    public List<GameObject> wheelMesh;
+    public List<Transform> wheelMesh;
     public float maxMotorTorque;
     public float maxSteeringTorque;
     public float maxBreakTorque;
@@ -35,7 +35,6 @@ public class carController : MonoBehaviour
     public void setCenterOfMass(){
         Vector3 pos = Vector3.zero;
         pos.y = -0.9f; 
-        Debug.Log(rigi.centerOfMass);
     }
     private void FixedUpdate() {
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
@@ -56,11 +55,21 @@ public class carController : MonoBehaviour
                 item.wheelR.motorTorque = motor;
 
             }
-            if (item.sterring && (Input.GetAxis("Horizontal") >= 0.2f || Input.GetAxis("Horizontal") <= -0.2f) )
+            if (item.sterring  )
             {
-                Quaternion newRot = Quaternion.Euler(0,sterring,0);
+                float angle = Quaternion.Angle(transform.rotation , Quaternion.Euler(0,0,0)); 
                 item.wheelB.steerAngle = sterring;
                 item.wheelR.steerAngle = sterring;
+                item.wheelB.transform.rotation = transform.rotation; 
+                item.wheelR.transform.rotation = transform.rotation; 
+                item.wheelB.transform.Rotate(0,sterring,0);
+                item.wheelR.transform.Rotate(0,sterring,0);
+            }
+            else
+            {
+
+                item.wheelB.transform.rotation = transform.rotation; 
+                item.wheelR.transform.rotation = transform.rotation; 
             }
             if (item.breakTorque && Input.GetKey(KeyCode.Space))
             {
