@@ -961,8 +961,8 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_Mass: 80
+  m_WheelDampingRate: 15
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -974,7 +974,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 3
   m_Enabled: 1
 --- !u!1 &1311733075
 GameObject:
@@ -1082,14 +1082,14 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_Mass: 80
+  m_WheelDampingRate: 15
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -1175,7 +1175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506601547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.86, y: -4.28, z: -12.61}
+  m_LocalPosition: {x: -38.6, y: -4.28, z: 38.6}
   m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
   m_Children:
   - {fileID: 1506506345}
@@ -1287,8 +1287,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1506506347}
-  - component: {fileID: 1626782690}
   - component: {fileID: 1506601548}
+  - component: {fileID: 1506601549}
   m_Layer: 0
   m_Name: Police Car v1 1
   m_TagString: Untagged
@@ -1312,6 +1312,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1506601549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506601547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2242984f07e0ced42a9e8ddcaefed334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCar: {fileID: 7127007908799928726}
+  colliders:
+  - wheelR: {fileID: 1345700528}
+    wheelB: {fileID: 1635921265}
+    motorTorque: 1
+    sterring: 0
+    breakTorque: 1
+  - wheelR: {fileID: 1305441986}
+    wheelB: {fileID: 2107602312}
+    motorTorque: 1
+    sterring: 1
+    breakTorque: 0
+  maxMotorTorquo: 1000
+  maxSteertAngle: 45
 --- !u!23 &1508799617
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1720,28 +1746,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577360261}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!195 &1626782690
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506601547}
-  m_Enabled: 0
-  m_AgentTypeID: -1372625422
-  m_Radius: 5.28
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 4.73
-  m_BaseOffset: 1.13
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 3
 --- !u!146 &1635921265
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1755,22 +1759,22 @@ WheelCollider:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 1
+  m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 80
-  m_WheelDampingRate: 33.09
+  m_WheelDampingRate: 15
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 3
+    m_Stiffness: 1
   m_Enabled: 1
 --- !u!1 &1644390956
 GameObject:
@@ -2467,8 +2471,8 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_Mass: 80
+  m_WheelDampingRate: 15
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
@@ -2480,7 +2484,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 3
   m_Enabled: 1
 --- !u!23 &7127007908798028656
 MeshRenderer:
