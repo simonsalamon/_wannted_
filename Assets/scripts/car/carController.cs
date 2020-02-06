@@ -13,6 +13,7 @@ public class wheel{
 
 public class carController : MonoBehaviour
 {
+    [SerializeField] float RPM;
     public List<wheel> wheelsCollider;
     public List<Transform> wheelMesh;
     public float maxMotorTorque;
@@ -30,11 +31,12 @@ public class carController : MonoBehaviour
         rigi = GetComponent<Rigidbody>();
         rigi.inertiaTensor *= inertiaFactor;
         setCenterOfMass();
+        
     }
 
     public void setCenterOfMass(){
         Vector3 pos = Vector3.zero;
-        pos.y = -0.9f; 
+        pos.y = -1.9f; 
     }
     private void FixedUpdate() {
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
@@ -47,17 +49,22 @@ public class carController : MonoBehaviour
             
             item.wheelB.transform.rotation = initRot;
             item.wheelR.transform.rotation = initRot;
+            
+            //      motor torque
             if (item.motorTorque)
             {
                 item.wheelB.brakeTorque = 0;
                 item.wheelR.brakeTorque = 0;
+
                 item.wheelB.motorTorque = motor;
                 item.wheelR.motorTorque = motor;
 
+                Debug.Log(item.wheelB.motorTorque);
             }
+            //          sterring wheel
             if (item.sterring  )
             {
-                float angle = Quaternion.Angle(transform.rotation , Quaternion.Euler(0,0,0)); 
+                float angle = Quaternion.Angle(transform.rotation , Quaternion.Euler(0,0,0));
                 item.wheelB.steerAngle = sterring;
                 item.wheelR.steerAngle = sterring;
                 item.wheelB.transform.rotation = transform.rotation; 
@@ -71,6 +78,7 @@ public class carController : MonoBehaviour
                 item.wheelB.transform.rotation = transform.rotation; 
                 item.wheelR.transform.rotation = transform.rotation; 
             }
+            //      break wheel
             if (item.breakTorque && Input.GetKey(KeyCode.Space))
             {
                 item.wheelB.brakeTorque = maxBreakTorque;
