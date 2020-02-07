@@ -15,7 +15,7 @@ public class PoliceCar : MonoBehaviour
     bool flagDestroy = false;
     private void Start() {
         
-        rigi.centerOfMass = new Vector3(0,-1.3f,0);
+        rigi.centerOfMass = new Vector3(0,-1.3f,0); 
     }
 
     private void FixedUpdate() {
@@ -34,8 +34,6 @@ public class PoliceCar : MonoBehaviour
 
                     item.wheelB.motorTorque = maxMotorTorquo;
                     item.wheelR.motorTorque = maxMotorTorquo;
-
-                    Debug.Log(item.wheelB.motorTorque);
                 }
                 //          sterring wheel
                 if (item.sterring)
