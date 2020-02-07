@@ -59,8 +59,6 @@ public class carController : MonoBehaviour
 
                     item.wheelB.motorTorque = motor;
                     item.wheelR.motorTorque = motor;
-
-                    Debug.Log(item.wheelB.motorTorque);
                 }
                 //          sterring wheel
                 if (item.sterring  )
@@ -88,6 +86,18 @@ public class carController : MonoBehaviour
                 ApplyLocalPositionToVisuals(item.wheelR);
                 ApplyLocalPositionToVisuals(item.wheelB);
             }            
+        }
+        else
+        {
+            foreach (var item in wheelsCollider)
+            {
+                item.wheelB.brakeTorque = maxBreakTorque;
+                item.wheelR.brakeTorque = maxBreakTorque;
+                if (item.wheelB.rpm <10f || item.wheelR.rpm > -10f)
+                {
+                    Destroy(gameObject , 3f);
+                }
+            }
         }
     }
     public void ApplyLocalPositionToVisuals(WheelCollider collider)

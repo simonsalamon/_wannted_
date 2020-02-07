@@ -830,7 +830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815639136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalPosition: {x: 0, y: 3, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7127007908799928726}
@@ -952,7 +952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197639861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100, y: 0, z: 0}
+  m_LocalPosition: {x: -100, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7127007908799928726}
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1222245644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d72309a9b3680e449a3877733c6ea5b, type: 3}
+  m_Script: {fileID: 11500000, guid: fe25867d8b5723746b8658d88e8ad81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   expo: {fileID: 5535245075367987266, guid: ba240c2c439cb8d4793595b02ebbb921, type: 3}
@@ -996,6 +996,7 @@ MonoBehaviour:
   - {fileID: 1490405503}
   - {fileID: 1197639862}
   - {fileID: 1336776008}
+  TimeBetweenClone: 10
 --- !u!4 &1222245646
 Transform:
   m_ObjectHideFlags: 0
@@ -1125,7 +1126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336776007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100, y: 0, z: 0}
+  m_LocalPosition: {x: 100, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7127007908799928726}
@@ -1155,7 +1156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490405502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 3, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7127007908799928726}
@@ -1437,6 +1438,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b23a2daf5a1083240a943287c72379f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 7127007908799928726}
@@ -2781,7 +2794,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 1
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 45
   m_WheelDampingRate: 33.09
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -2830,7 +2843,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 1
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 45
   m_WheelDampingRate: 33.09
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -2891,7 +2904,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 1
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 45
   m_WheelDampingRate: 33.09
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -2921,7 +2934,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 1
   m_ForceAppPointDistance: 0
-  m_Mass: 80
+  m_Mass: 45
   m_WheelDampingRate: 33.09
   m_ForwardFriction:
     m_ExtremumSlip: 0.4

@@ -15,12 +15,12 @@ public class PoliceCar : MonoBehaviour
     bool flagDestroy = false;
     private void Start() {
         
-        rigi.centerOfMass = new Vector3(0,-1.3f,0); 
+        // rigi.centerOfMass = new Vector3(0,-1.3f,0); 
     }
 
     private void FixedUpdate() {
 
-        if (!flagDestroy)
+        if (!flagDestroy && gameManager.Instance.State == gameState.play)
         {       
             Vector3 playerPos = findPlayer();
             sterring = maxSteertAngle * playerPos.x;
