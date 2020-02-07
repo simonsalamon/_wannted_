@@ -10,6 +10,10 @@ public enum gameState
 public class gameManager : singelton<gameManager>
 {
     [SerializeField] private GameObject expo;
+    [SerializeField] private GameObject Enemy;
+    [SerializeField] private Transform player;
+    [SerializeField] private float offcet; 
+    [SerializeField] private List<Transform> pos;
     private gameState state;
     public gameState State{get{return state;}}
     private void Start() {
@@ -18,6 +22,18 @@ public class gameManager : singelton<gameManager>
     public void loseGame(){
         state = gameState.lose;
     }
+
+    private void Update() {
+        initEnemy();
+    }
+
+    public void initEnemy(){
+        Transform newPos = pos[Random.Range(0,4)];
+        GameObject enemy = Instantiate(Enemy ,newPos.position, Quaternion.identity) as GameObject;
+        PoliceCar car =  enemy.GetComponent<PoliceCar>();
+        car.PlayerCar = player;
+    }
+
     public void explorecar(Vector3 position){
         // here we explore cars when collide
         GameObject go = Instantiate(expo , position , Quaternion.identity) as GameObject;
