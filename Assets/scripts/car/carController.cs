@@ -31,7 +31,6 @@ public class carController : MonoBehaviour
         rigi = GetComponent<Rigidbody>();
         rigi.inertiaTensor *= inertiaFactor;
         setCenterOfMass();
-        
     }
 
     public void setCenterOfMass(){
@@ -44,49 +43,52 @@ public class carController : MonoBehaviour
 
 
 
-        foreach (var item in wheelsCollider )
+        if (gameManager.Instance.State != gameState.lose)
         {
-            
-            item.wheelB.transform.rotation = initRot;
-            item.wheelR.transform.rotation = initRot;
-            
-            //      motor torque
-            if (item.motorTorque)
+            foreach (var item in wheelsCollider )
             {
-                item.wheelB.brakeTorque = 0;
-                item.wheelR.brakeTorque = 0;
+                
+                item.wheelB.transform.rotation = initRot;
+                item.wheelR.transform.rotation = initRot;
+                
+                //      motor torque
+                if (item.motorTorque)
+                {
+                    item.wheelB.brakeTorque = 0;
+                    item.wheelR.brakeTorque = 0;
 
-                item.wheelB.motorTorque = motor;
-                item.wheelR.motorTorque = motor;
+                    item.wheelB.motorTorque = motor;
+                    item.wheelR.motorTorque = motor;
 
-                Debug.Log(item.wheelB.motorTorque);
-            }
-            //          sterring wheel
-            if (item.sterring  )
-            {
-                float angle = Quaternion.Angle(transform.rotation , Quaternion.Euler(0,0,0));
-                item.wheelB.steerAngle = sterring;
-                item.wheelR.steerAngle = sterring;
-                item.wheelB.transform.rotation = transform.rotation; 
-                item.wheelR.transform.rotation = transform.rotation; 
-                item.wheelB.transform.Rotate(0,sterring,0);
-                item.wheelR.transform.Rotate(0,sterring,0);
-            }
-            else
-            {
+                    Debug.Log(item.wheelB.motorTorque);
+                }
+                //          sterring wheel
+                if (item.sterring  )
+                {
+                    float angle = Quaternion.Angle(transform.rotation , Quaternion.Euler(0,0,0));
+                    item.wheelB.steerAngle = sterring;
+                    item.wheelR.steerAngle = sterring;
+                    item.wheelB.transform.rotation = transform.rotation; 
+                    item.wheelR.transform.rotation = transform.rotation; 
+                    item.wheelB.transform.Rotate(0,sterring,0);
+                    item.wheelR.transform.Rotate(0,sterring,0);
+                }
+                else
+                {
 
-                item.wheelB.transform.rotation = transform.rotation; 
-                item.wheelR.transform.rotation = transform.rotation; 
-            }
-            //      break wheel
-            if (item.breakTorque && Input.GetKey(KeyCode.Space))
-            {
-                item.wheelB.brakeTorque = maxBreakTorque;
-                item.wheelR.brakeTorque = maxBreakTorque;
-            }
-            ApplyLocalPositionToVisuals(item.wheelR);
-            ApplyLocalPositionToVisuals(item.wheelB);
-        }   
+                    item.wheelB.transform.rotation = transform.rotation; 
+                    item.wheelR.transform.rotation = transform.rotation; 
+                }
+                //      break wheel
+                if (item.breakTorque && Input.GetKey(KeyCode.Space))
+                {
+                    item.wheelB.brakeTorque = maxBreakTorque;
+                    item.wheelR.brakeTorque = maxBreakTorque;
+                }
+                ApplyLocalPositionToVisuals(item.wheelR);
+                ApplyLocalPositionToVisuals(item.wheelB);
+            }            
+        }
     }
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
@@ -102,5 +104,11 @@ public class carController : MonoBehaviour
      
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
+    }
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "ground")
+        {
+            gameManager.Instance.loseGame();
+        }
     }
 }

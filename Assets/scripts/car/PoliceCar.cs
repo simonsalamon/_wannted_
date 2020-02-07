@@ -82,4 +82,10 @@ public class PoliceCar : MonoBehaviour
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
     }
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "ground")
+        {
+            gameManager.Instance.explorecar(transform.position);
+        }
+    }
 }
