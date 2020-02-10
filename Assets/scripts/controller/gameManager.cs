@@ -23,18 +23,18 @@ public class gameManager : singelton<gameManager>
         cloneTime = TimeBetweenClone;
     }
 
-    private void Update() {
-        cloneTime -= Time.fixedDeltaTime;
-        if(cloneTime <= 0f)
-        {
-            cloneTime = TimeBetweenClone;
-            initEnemy();
-        } 
-    }
+    // private void Update() {
+        // cloneTime -= Time.fixedDeltaTime;
+        // if(cloneTime <= 0f)
+        // {
+        //     cloneTime = TimeBetweenClone;
+        //     initEnemy();
+        // } 
+    // }
 
-    public void initEnemy(){
+    public void initEnemy(GameObject EnemyCar){
         Transform newPos = pos[Random.Range(0,4)];
-        GameObject enemy = Instantiate(Enemy ,newPos.position, Quaternion.identity) as GameObject;
+        GameObject enemy = Instantiate(EnemyCar ,newPos.position, Quaternion.identity) as GameObject;
         PoliceCar car =  enemy.GetComponent<PoliceCar>();
         car.GetComponent<Rigidbody>().centerOfMass = new Vector3(0,-1.9f,0); 
         car.PlayerCar = player;

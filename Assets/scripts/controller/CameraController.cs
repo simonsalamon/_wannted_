@@ -6,14 +6,14 @@ public class CameraController : MonoBehaviour
 {   
     [SerializeField] Transform car;
     public float SmoothPos = 10f;
-    public float SmoothRot = 10f;
-    [SerializeField] private float distance;
     [SerializeField] private float height;
+    [SerializeField] private float Distance;
     private void FixedUpdate() {
-        Vector3 WanntedPos;
-        WanntedPos = car.TransformPoint(0,height , -distance);
-        transform.position = Vector3.Lerp(transform.position , WanntedPos , SmoothPos * Time.deltaTime);
-        Quaternion wantedRot = Quaternion.LookRotation(car.position - transform.position , car.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation , wantedRot , SmoothRot * Time.deltaTime );
-     }
+        Vector3 pos = Vector3.zero;
+        pos.x = car.position.x + Distance;
+        pos.y = height;
+        pos.z = car.position.z;
+        transform.position = Vector3.Lerp(transform.position , pos , SmoothPos * Time.deltaTime);
+        transform.LookAt(car.transform);
+    }
 }

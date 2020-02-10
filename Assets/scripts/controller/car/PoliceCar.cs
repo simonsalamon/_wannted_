@@ -6,16 +6,24 @@ public class PoliceCar : MonoBehaviour
 {
     public Transform PlayerCar;
     public List<wheel> colliders;
-    [HideInInspector]
+    [Range(2500 , 5000)]
     public float maxMotorTorquo = 1000f;
+    [Range(-3,0)]
+    public float centerOfMass;
     public float maxSteertAngle;
     public float maxBreakTorque;
     private float sterring;
     Rigidbody rigi;
     bool flagDestroy = false;
     private void Start() {
-        
-        // rigi.centerOfMass = new Vector3(0,-1.3f,0); 
+        rigi = GetComponent<Rigidbody>();
+        Vector3 test = Vector3.zero;
+        test.y = centerOfMass;
+        CenterOfMass(test); 
+        rigi.inertiaTensor *= 5f;
+    }
+    public void CenterOfMass(Vector3 mass){
+        rigi.centerOfMass = mass;
     }
 
     private void FixedUpdate() {

@@ -21,7 +21,10 @@ public class carController : MonoBehaviour
     public float maxBreakTorque;
     public float inertiaFactor;
     private Rigidbody rigi;
+    private Touch touch;
     Quaternion initRot;
+    int screenWidth;
+    float sterring;
     // Start is called before the first frame update
     private void Awake() {
         initRot = transform.rotation;   
@@ -35,11 +38,21 @@ public class carController : MonoBehaviour
 
     public void setCenterOfMass(){
         Vector3 pos = Vector3.zero;
-        pos.y = -1.9f; 
+        // pos.y = -1.7f;
+        rigi.centerOfMass = pos;
     }
     private void FixedUpdate() {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float sterring = maxSteeringTorque * Input.GetAxis("Horizontal");
+        float motor = maxMotorTorque;
+        screenWidth = Screen.width;
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);            
+            sterring = maxSteeringTorque * sterrtAgnel(touch.position);
+        }
+        else
+        {
+            sterring = 0;
+        }
 
 
 
@@ -100,6 +113,15 @@ public class carController : MonoBehaviour
             }
         }
     }
+
+    public float sterrtAgnel(Vector2 position){
+        float halfScreen=screenWidth/2;
+        if(position.x > halfScreen)
+            return 1;
+        else
+            return -1;
+    }
+
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
         if (collider.transform.childCount == 0) {
