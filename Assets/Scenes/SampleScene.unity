@@ -9817,10 +9817,10 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.0001
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 25
   m_Depth: 0
   m_CullingMask:
@@ -9845,7 +9845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644390956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.49, y: -3.69, z: -18.27}
+  m_LocalPosition: {x: -16.2, y: -26.55, z: -31.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9863,10 +9863,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25749469262cb0418a7eb5c2300d088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 7127007908799928726}
-  SmoothPos: 10
-  height: 25
-  Distance: 25
+  TargetObject: {fileID: 7127007908799928726}
+  followDistance: 5
+  followHeight: 2
+  smoothedFollow: 0
+  smoothSpeed: 5
+  useFixedLookDirection: 0
+  fixedLookDirection: {x: 1, y: 1, z: 1}
 --- !u!1 &1649093515
 GameObject:
   m_ObjectHideFlags: 0
@@ -13222,7 +13225,7 @@ MonoBehaviour:
   wheelMesh:
   - {fileID: 7127007908799928728}
   - {fileID: 7127007908799928730}
-  maxMotorTorque: 5000
+  maxMotorTorque: 10
   maxSteeringTorque: 50
   maxBreakTorque: 15000
   inertiaFactor: 5
