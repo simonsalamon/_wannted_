@@ -20,16 +20,6 @@ public class gameManager : singelton<gameManager>
         state = gameState.play;
         cloneTime = TimeBetweenClone;
     }
-
-    // private void Update() {
-        // cloneTime -= Time.fixedDeltaTime;
-        // if(cloneTime <= 0f)
-        // {
-        //     cloneTime = TimeBetweenClone;
-        //     initEnemy();
-        // } 
-    // }
-
     public void loseGame(){
         state = gameState.lose;
     }
